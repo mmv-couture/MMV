@@ -1,0 +1,239 @@
+/* Minimal global styles (generated to avoid missing import) */
+:root{
+  /* New color scheme: Dark Orange, Sand (Sable), White */
+  --brand-orange-dark: #92400e;
+  --brand-orange-light: #b45309;
+  --brand-sand: #a89968;
+  --brand-sand-light: #d4c5a9;
+  --brand-sand-lighter: #e8dcc8;
+  --brand-white: #ffffff;
+  --brand-dark: #2c2c2c;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --font-heading: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  
+  /* Animation timing */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html,body,#root{height:100%;}
+body{margin:0;background:#e8dcc8;color:#2c2c2c;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;touch-action:auto;-webkit-touch-callout:none;-webkit-user-select:none;}
+
+/* ===== SMOOTH SCROLLING ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== FOCUS STATES ===== */
+*:focus-visible {
+  outline: 2px solid var(--brand-orange-light);
+  outline-offset: 2px;
+}
+
+/* ===== PAGE TRANSITIONS ===== */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-normal) var(--ease-out),
+              transform var(--transition-normal) var(--ease-out);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-fast) var(--ease-in-out),
+              transform var(--transition-fast) var(--ease-in-out);
+}
+
+/* ===== MODAL/DRAWER TRANSITIONS ===== */
+.modal-backdrop-enter {
+  opacity: 0;
+}
+
+.modal-backdrop-enter-active {
+  opacity: 1;
+  transition: opacity var(--transition-normal) var(--ease-out);
+}
+
+.modal-backdrop-exit {
+  opacity: 1;
+}
+
+.modal-backdrop-exit-active {
+  opacity: 0;
+  transition: opacity var(--transition-fast) var(--ease-in-out);
+}
+
+.modal-content-enter {
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+}
+
+.modal-content-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: opacity var(--transition-normal) var(--ease-out),
+              transform var(--transition-normal) var(--ease-out);
+}
+
+.drawer-enter {
+  transform: translateX(-100%);
+}
+
+.drawer-enter-active {
+  transform: translateX(0);
+  transition: transform var(--transition-normal) var(--ease-out);
+}
+
+.drawer-exit {
+  transform: translateX(0);
+}
+
+.drawer-exit-active {
+  transform: translateX(-100%);
+  transition: transform var(--transition-fast) var(--ease-in-out);
+}
+
+/* ===== SKELETON SHIMMER ===== */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast-enter {
+  opacity: 0;
+  transform: translateY(100%) scale(0.9);
+}
+
+.toast-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all var(--transition-normal) var(--ease-out);
+}
+
+.toast-exit {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.toast-exit-active {
+  opacity: 0;
+  transform: translateY(100%) scale(0.9);
+  transition: all var(--transition-fast) var(--ease-in-out);
+}
+
+/* Mobile-first font size optimization */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px; /* Slightly smaller base font */
+  }
+  
+  h1 { font-size: 1.5rem; line-height: 1.6; }
+  h2 { font-size: 1.25rem; line-height: 1.5; }
+  h3 { font-size: 1.1rem; line-height: 1.4; }
+  h4 { font-size: 1rem; line-height: 1.4; }
+  p { font-size: 0.9rem; line-height: 1.5; }
+  button { font-size: 0.875rem; }
+  input, select, textarea { font-size: 1rem; } /* Prevent zoom on iOS */
+  
+  /* Buttons stay readable */
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Tablet: normal sizes */
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop: comfortable sizes */
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.875rem; }
+}
+
+/* Ensure all interactive elements respond to clicks */
+button, a, input, select, textarea, [role="button"], [onClick] {
+  touch-action: auto;
+  pointer-events: auto;
+}
+
+/* Fix for overlay click blocking on mobile */
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.4); }
+
+/* ===== CUSTOM SCROLLBAR FOR WEBKIT ===== */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Firefox scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+/* Utility helpers mapped to design tokens */
+.text-brand-orange-dark { color: var(--brand-orange-dark) !important; }
+.bg-brand-orange-dark { background-color: var(--brand-orange-dark) !important; }
+.text-brand-orange-light { color: var(--brand-orange-light) !important; }
+.bg-brand-orange-light { background-color: var(--brand-orange-light) !important; }
+.text-brand-sand { color: var(--brand-sand) !important; }
+.bg-brand-sand { background-color: var(--brand-sand) !important; }
+.text-brand-sand-light { color: var(--brand-sand-light) !important; }
+.bg-brand-sand-light { background-color: var(--brand-sand-light) !important; }
+.text-brand-sand-lighter { color: var(--brand-sand-lighter) !important; }
+.bg-brand-sand-lighter { background-color: var(--brand-sand-lighter) !important; }
+.text-brand-white { color: var(--brand-white) !important; }
+.bg-brand-white { background-color: var(--brand-white) !important; }
+.text-brand-dark { color: var(--brand-dark) !important; }
+.bg-brand-dark { background-color: var(--brand-dark) !important; }
+.font-heading { font-family: var(--font-heading) !important; }

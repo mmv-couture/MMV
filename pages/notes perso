@@ -1,0 +1,54 @@
+Parfait ! Voici le guide pour Android Studio 🚀
+
+📥 1. Téléchargez Android Studio
+Allez sur : https://developer.android.com/studio
+
+Cliquez sur "Download Android Studio" (version Windows)
+
+💾 2. Installez Android Studio
+Double-cliquez sur l'installeur
+Suivez l'assistant (acceptez tout)
+À la fin, sélectionnez "Start Android Studio"
+Acceptez la licence Android SDK
+L'installation prendra 10-15 minutes (beaucoup de fichiers à télécharger).
+
+📂 3. Ouvrez votre projet Android
+Une fois Android Studio ouvert, lancez cette commande depuis votre terminal :
+
+npx cap open android
+
+Android Studio ouvrira automatiquement votre projet android dans la bonne configuration.
+
+🔨 4. Build l'APK
+Attendez que Gradle finisse la synchronisation (en bas, barre de progression)
+Menu du haut : Build → Build Bundle(s) / APK(s) → Build APK(s)
+Attendez 2-5 minutes
+Une notification apparaît : "Build successful" ✅
+📦 5. Localisez votre APK
+L'APK se trouve ici :
+android/app/release/app-release.apk
+
+📱 6. Installez sur téléphone
+A) Avec USB (depuis Android Studio)
+Branchez votre téléphone Android en USB
+Activez "Débogage USB" (Paramètres → À propos → Numéro de version × 7 coups)
+Dans Android Studio : Run → Run 'app' → Sélectionnez votre téléphone
+B) Transfert manuel
+Copiez app-release.apk sur une clé USB
+Mettez la clé sur votre téléphone
+Ouvrez le fichier → Installer
+C'est tout ! Une fois fatto, MMV Couture apparaîtra sur votre écran d'accueil comme une vraie app nativement Android. 📱✨
+
+Besoin d'aide avec Android Studio ?
+
+IDENTIF
+Comment tester maintenant
+Allez sur http://localhost:3003
+Cliquez sur "Connexion" (ou "Inscription" → page de login)
+Entrez :
+Email: adoris@mmv.com
+Mot de passe: adélaris@2025
+Cliquez "Se connecter"
+→ Vous serez automatiquement dirigé vers l'Admin Console raffinée 🎉
+
+Les utilisateurs normaux (ateliers) se connectent avec leurs propres identifiants et auront accès à leur dashboard respectif.mainten
