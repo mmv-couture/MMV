@@ -63,6 +63,11 @@ const Dashboard: React.FC<DashboardProps> = ({ isNewAtelier, onDismissOnboarding
     const { atelier } = useAuth();
     const { navigate } = useNavigation();
     
+    // @ts-ignore
+    const handleNav = (page: any) => {
+        navigate(page);
+    };
+    
     if (!atelier) {
         return (
             <PageLayout title="Tableau de bord">
@@ -232,7 +237,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isNewAtelier, onDismissOnboarding
                             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                             <span className="text-sm text-stone-700 dark:text-stone-300 font-medium">Voir l'agenda de la semaine</span>
                         </button>
-                        <button onClick={() => navigate({ name: 'subscription', path: '/subscription' } as any)} className="w-full text-left p-3 bg-stone-50 dark:bg-stone-700/30 rounded flex items-center gap-3 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                        <button onClick={() => navigate('subscription')} className="w-full text-left p-3 bg-stone-50 dark:bg-stone-700/30 rounded flex items-center gap-3 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
                             <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                             <span className="text-sm text-stone-700 dark:text-stone-300 font-medium">Gérer l'abonnement</span>
                         </button>
