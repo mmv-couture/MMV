@@ -21,6 +21,9 @@ export default defineConfig(({ mode }) => {
       },
       build: {
         chunkSizeWarningLimit: 1000, // Increase warning threshold to 1MB
+        outDir: 'dist',
+        assetsDir: 'assets',
+        sourcemap: true,
         rollupOptions: {
           output: {
             manualChunks(id) {
@@ -43,8 +46,10 @@ export default defineConfig(({ mode }) => {
             },
             chunkFileNames: 'assets/[name]-[hash].js',
             entryFileNames: 'assets/[name]-[hash].js',
+            assetFileNames: 'assets/[name]-[hash].[ext]'
           }
         }
-      }
+      },
+      base: './'
     };
 });
