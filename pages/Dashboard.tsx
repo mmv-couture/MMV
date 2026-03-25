@@ -1,12 +1,17 @@
 
 import React, { useMemo } from 'react';
 import { useAuth } from '../auth/AuthContext';
+import { useNavigation } from '../context/NavigationContext';
 import PageLayout from '../components/PageLayout';
 import { OrderIcon, AgendaIcon, TrackIcon, ClientsIcon } from '../components/icons';
 import OnboardingGuide from '../components/OnboardingGuide';
 import { SkeletonLoader } from '../components';
 import { BarChart, PieChart, StatCard as ChartStatCard } from '../components/Charts';
-import type { Order, Client, Modele, Page } from '../types';
+import type { Order, Client, Page } from '../types/index';
+
+// Types temporaires pour débloquer la situation
+type Model = any;
+type UrgentOrderCardProps = { order: Order; client?: Client; model?: Model; daysLeft: number; onClick: () => void };
 
 // Updated StatCard to be clickable
 const StatCard: React.FC<{ title: string; value: string | number; icon: React.ReactNode; description: string; onClick?: () => void }> = ({ title, value, icon, description, onClick }) => (
@@ -54,8 +59,9 @@ interface DashboardProps {
   onNavigate?: (page: Page) => void; 
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ isNewAtelier, onDismissOnboarding, onNavigate }) => {
+const Dashboard: React.FC<DashboardProps> = ({ isNewAtelier, onDismissOnboarding }) => {
     const { atelier } = useAuth();
+    const { navigate } = useNavigation();
     
     if (!atelier) {
         return (

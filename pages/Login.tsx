@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../auth/AuthContext';
-import type { Page } from '../types';
+import type { Page } from '../types/index';
 
 interface LoginProps {
     onNavigate: (page: Page) => void;
@@ -33,18 +33,20 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
         }
         // Simulation - en production, appeler une API
         setForgotMessage(`Un lien de réinitialisation a été envoyé à ${forgotEmail}. Vérifiez votre boîte mail.`);
+        
+        // Fermeture automatique après succès
         setTimeout(() => {
             setShowForgotPassword(false);
             setForgotEmail('');
             setForgotMessage('');
-        }, 3000);
+        }, 4000); // Augmenté à 4 secondes pour permettre la lecture
     };
 
     return (
         <div className="w-screen h-screen flex items-center justify-center bg-orange-50 dark:bg-orange-900 p-4">
             {/* Forgot Password Modal */}
             {showForgotPassword && (
-                <div className="fixed inset-0 bg-black/50 dark:bg-black/70 z-50 flex items-center justify-center">
+                <div className="fixed inset-0 bg-black/50 dark:bg-black/70 z-[9999] flex items-center justify-center">
                     <div className="bg-white dark:bg-orange-800 rounded-2xl shadow-2xl max-w-sm w-full p-6 animate-fade-in border border-orange-100 dark:border-orange-700">
                         <h3 className="text-2xl font-bold text-orange-900 dark:text-orange-50 mb-2">Réinitialiser le mot de passe</h3>
                         <p className="text-sm text-orange-700 dark:text-orange-200 mb-4">Entrez votre email pour recevoir un lien de réinitialisation.</p>
@@ -136,7 +138,7 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
 
                 <p className="text-center text-sm text-orange-700 dark:text-orange-200 mt-6">
                     Pas encore d'atelier ?{' '}
-                    <button onClick={() => onNavigate('register')} className="font-bold text-orange-900 dark:text-orange-100 hover:text-orange-700 dark:hover:text-orange-300 underline">
+                    <button onClick={() => onNavigate({ name: 'register', path: '/register' } as Page)} className="font-bold text-orange-900 dark:text-orange-100 hover:text-orange-700 dark:hover:text-orange-300 underline">
                         Inscrivez-vous
                     </button>
                 </p>
