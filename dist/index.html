@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- PWA & Mobile Enhancements -->
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./icon-192.png" />
+    <meta name="theme-color" content="#92400e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MMV" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- SEO Meta Tags -->
+    <title>MMV COUTURE | Plateforme Professionnelle pour Créateurs de Mode Africains</title>
+    <meta name="description" content="Plateforme SaaS complète pour créateurs de mode africains. Gestion de catalogue, tutoriels couture, clients, commandes et paiements Mobile Money." />
+    <meta name="keywords" content="couture africaine, mode africaine, créateurs mode, tutoriels couture, vêtements traditionnels, pagne, gestion atelier, SaaS mode" />
+    <meta name="author" content="MMV COUTURE" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mmv-couture.com" />
+    <meta property="og:title" content="MMV COUTURE | Plateforme Professionnelle pour Créateurs de Mode Africains" />
+    <meta property="og:description" content="Plateforme SaaS complète pour créateurs de mode africains. Gestion de catalogue, tutoriels couture, clients et commandes." />
+    <meta property="og:image" content="./og-image.png" />
+    <meta property="og:locale" content="fr_FR" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mmv-couture.com" />
+    <meta property="twitter:title" content="MMV COUTURE | Plateforme Professionnelle pour Créateurs de Mode Africains" />
+    <meta property="twitter:description" content="Plateforme SaaS complète pour créateurs de mode africains. Gestion de catalogue, tutoriels couture, clients et commandes." />
+    <meta property="twitter:image" content="./og-image.png" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mmv-couture.com" />
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="fr" href="https://mmv-couture.com" />
+    <link rel="alternate" hreflang="en" href="https://mmv-couture.com/en" />
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://rsms.me" />
+    <link rel="dns-prefetch" href="https://rsms.me" />
+    
+    <!-- Capacitor Configuration -->
+    <meta name="capacitor-version" content="5.0.0" />
+    
+    <!-- System fonts fallback - works offline with graceful degradation -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.classList.add('no-font-load')">
+    <noscript><link rel="stylesheet" href="https://rsms.me/inter/inter.css"></noscript>
+    
+    <style>
+      /* Fallback system fonts while remote fonts load - ensures app works offline */
+      html { 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+        scroll-behavior: smooth;
+      }
+      body { 
+        background-color: #f0f4f8; 
+        color: #0f172a;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Minimum viable styling while CSS loads */
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      /* Scrollbar fine et pro */
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: #f0f4f8; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BvvSVHWS.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/vendor-react-D39sujLR.js">
+    <link rel="modulepreload" crossorigin href="./assets/vendor-auth-CmFGcI-1.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-admin-DEg9s59j.js">
+    <link rel="modulepreload" crossorigin href="./assets/vendor-payments-Vzn6hbaL.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-B8e06TSl.css">
+  </head>
+  <body class="antialiased overflow-x-hidden">
+    <div id="root"></div>
+  </body>
+</html>
