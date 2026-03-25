@@ -46,6 +46,23 @@ export interface Client {
   updatedAt: Date;
 }
 
+// Fonction utilitaire pour le nom complet
+export const getClientFullName = (client: Client): string => {
+  return `${client.firstName} ${client.lastName}`;
+};
+
+export interface Model {
+  id: string;
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  price?: number;
+  category?: string;
+  tags?: string[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Order {
   id: string;
   clientId: string;
@@ -57,6 +74,10 @@ export interface Order {
   deliveryDate?: Date;
   createdAt: Date;
   updatedAt: Date;
+  
+  // Alias pour compatibilité avec le code existant
+  ticketId: string;  // Alias vers id
+  date: Date;        // Alias vers createdAt
 }
 
 export interface OrderItem {

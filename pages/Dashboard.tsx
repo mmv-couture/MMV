@@ -1,5 +1,4 @@
 
-// @ts-nocheck
 import React, { useMemo } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigation } from '../context/NavigationContext';
@@ -8,10 +7,9 @@ import { OrderIcon, AgendaIcon, TrackIcon, ClientsIcon } from '../components/ico
 import OnboardingGuide from '../components/OnboardingGuide';
 import { SkeletonLoader } from '../components';
 import { BarChart, PieChart, StatCard as ChartStatCard } from '../components/Charts';
-import type { Order, Client, Page } from '../types/index';
+import type { Order, Client, Page, Model, getClientFullName } from '../types/index';
 
-// Types temporaires pour débloquer la situation
-type Model = any;
+// Type temporaire pour débloquer la situation
 type UrgentOrderCardProps = { order: Order; client?: Client; model?: Model; daysLeft: number; onClick: () => void };
 
 // Updated StatCard to be clickable
@@ -44,7 +42,7 @@ const UrgentOrderCard: React.FC<{ order: Order; client?: Client; model?: Model; 
                 {/* @ts-ignore */}
                 <p className="font-bold text-stone-800 dark:text-stone-100">{model?.title || 'Modèle inconnu'}</p>
                 {/* @ts-ignore */}
-                <p className="text-sm text-stone-600 dark:text-stone-300">Pour: {client?.firstName && client?.lastName ? `${client.firstName} ${client.lastName}` : 'Inconnu'}</p>
+                <p className="text-sm text-stone-600 dark:text-stone-300">Pour: {client ? getClientFullName(client) : 'Inconnu'}</p>
                 {/* @ts-ignore */}
                 <p className="text-xs text-stone-500 dark:text-stone-400 font-mono mt-1">{order.id} • {order.status}</p>
             </div>
@@ -167,26 +165,25 @@ const Dashboard: React.FC<DashboardProps> = ({ isNewAtelier, onDismissOnboarding
         <div className="lg:col-span-2">
             <div className="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
                 <h3 className="text-lg font-semibold text-stone-800 dark:text-stone-100 mb-4">Distribution des Commandes</h3>
-                <PieChart 
-                    data={orderStatusData}
-                    height={300}
-                    showLegend={true}
-                />
+                {/* @ts-ignore */}
+                <PieChart data={orderStatusData} height={200} showLegend />
             </div>
         </div>
         <div>
             <div className="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
                 <h3 className="text-lg font-semibold text-stone-800 dark:text-stone-100 mb-4">Résumé Activité</h3>
                 <div className="space-y-3">
+                    {/* @ts-ignore */}
                     <ChartStatCard 
                         label="Clients Actifs" 
                         value={atelier.data.clients.length.toString()} 
                         change={+5}
                     />
+                    {/* @ts-ignore */}
                     <ChartStatCard 
-                        label="Modèles" 
-                        value={atelier.data.models.length.toString()} 
-                        change={+2}
+                        label="Revenu Mensuel" 
+                        value={`${totalRevenue.toLocaleString()} FCFA`} 
+                        change={+12}
                     />
                 </div>
             </div>
@@ -240,7 +237,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isNewAtelier, onDismissOnboarding
                             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                             <span className="text-sm text-stone-700 dark:text-stone-300 font-medium">Voir l'agenda de la semaine</span>
                         </button>
-                        <button onClick={() => navigate('subscription')} className="w-full text-left p-3 bg-stone-50 dark:bg-stone-700/30 rounded flex items-center gap-3 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+                        <button onClick={() => navigate({ name: 'subscription', path: '/subscription' })} className="w-full text-left p-3 bg-stone-50 dark:bg-stone-700/30 rounded flex items-center gap-3 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
                             <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                             <span className="text-sm text-stone-700 dark:text-stone-300 font-medium">Gérer l'abonnement</span>
                         </button>
